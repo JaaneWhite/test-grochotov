@@ -1,0 +1,26 @@
+.page-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.page-header {
+    width: 100%;
+}
+
+.cart-row {
+    width: 100%;
+}
+
+.cart-items-block {
+    width: 800px;
+}
+.total-block {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+}
+
