@@ -3,10 +3,9 @@ import {defineStore} from "pinia";
 import {TypeCartItem} from "~/plugins/catalog";
 
 
-
 interface State {
     cartItems: TypeCartItem[],
-    needInstall: Boolean
+    needInstall: boolean
 }
 
 
@@ -56,19 +55,19 @@ export const useCartStore = defineStore('cartStore', {
                     count: 1
                 },
             ],
-            needInstall: false
+            needInstall: true
         }
     },
 
     getters: {
-      totalCount: (state: { cartItems: any[]; }) => {
-          let totalCount = 0
-          // @ts-ignore
-          state.cartItems.forEach(item => {
-              totalCount = totalCount + item.count
-          })
-          return totalCount
-      },
+        totalCount: (state: { cartItems: any[]; }) => {
+            let totalCount = 0
+            // @ts-ignore
+            state.cartItems.forEach(item => {
+                totalCount = totalCount + item.count
+            })
+            return totalCount
+        },
         totalCountString: (state: { cartItems: any[]; }) => {
             let totalCount = 0
             // @ts-ignore
@@ -93,31 +92,32 @@ export const useCartStore = defineStore('cartStore', {
             return totalCount + ' ' + str
         },
 
-      totalPrice: (state: { cartItems: any[]; }) => {
-          let totalPrice = 0
+        totalPrice: (state: { cartItems: any[]; }) => {
+            let totalPrice = 0
             // @ts-ignore
-          state.cartItems.forEach(item => {
-              totalPrice = totalPrice + item.count * item.price
-          })
-          return totalPrice
+            state.cartItems.forEach(item => {
+                totalPrice = totalPrice + item.count * item.price
+            })
+            return totalPrice
         },
+
     },
 
     actions: {
         deleteItem(state: { cartItems: any[]; }, itemId: number) {
             let idx = state.cartItems.findIndex((item: { id: number; }) => item.id.toString() === itemId.toString())
             console.log(idx)
-            state.cartItems.splice(idx,1)
+            state.cartItems.splice(idx, 1)
         },
         clearCart(state: { cartItems: never[]; }) {
 
             state.cartItems = []
         },
-        addItemCount(state: { cartItems: any[]; }, itemId:number) {
+        addItemCount(state: { cartItems: any[]; }, itemId: number) {
             let item = state.cartItems.find((item: { id: number; }) => item.id === itemId)
             item.count++
         },
-        decItemCount(state: { cartItems: any[]; }, itemId:number) {
+        decItemCount(state: { cartItems: any[]; }, itemId: number) {
             let item = state.cartItems.find((item: { id: number; }) => item.id === itemId)
 
             item.count--
@@ -126,6 +126,9 @@ export const useCartStore = defineStore('cartStore', {
                 this.deleteItem(state, itemId)
             }
         },
+        invertNeedInstall(state: { needInstall: boolean; }) {
+            state.needInstall = !state.needInstall
+        }
     }
 
 })

@@ -225,6 +225,7 @@ h1 {
     border-radius: 4px;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 
 }
 .order-btn {
@@ -238,4 +239,55 @@ h1 {
     background-color: white;
     color: #0069B4;
     border: 1px solid #0069B4;
+}
+
+.custom-checkbox {
+    background: url("/assets/icons/checkbox_off.svg") no-repeat left center;
+    font-weight: 400;
+    width: 22px;
+    height: 22px;
+    background-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: auto;
+
+
+}
+
+.custom-checkbox.checked {
+     background: url("/assets/icons/checkbox_on.svg") no-repeat left center;
+     color: #67739A;
+     font-size: 16px;
+     font-weight: 400;
+ }
+
+.custom-checkbox:hover  {
+
+ }
+
+.install-block {
+    background-color: #F6F8FA;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 45px;
+}
+.install-image {
+    margin-left: 15px;
+}
+.install-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.install-text-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.install-text-comment {
+    font-size: 14px;
+    line-height: 21px;
+    color: #797B86;
 }
