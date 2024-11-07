@@ -1,7 +1,7 @@
 // @ts-ignore
 import {defineStore} from "pinia";
 import {TypeCartItem} from "~/plugins/catalog";
-import {catalogItems} from "~/plugins/catalog";
+
 
 
 interface State {
