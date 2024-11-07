@@ -1,7 +1,5 @@
 <template>
   <div class="swiper-block">
-    <div class="swiper-title">Просмотренные товары</div>
-    <div class="swiper-buttons"></div>
     <div class="swiper-content">
       <Swiper
           :slides-per-view="4"
@@ -17,6 +15,7 @@
       },
     }"
       >
+        <swiper-title :slides-count="store.watchedItems.length" />
         <SwiperSlide v-for="(slide, index) in store.watchedItems" :key="(index)">
           <div class="slide-card">
             <div class="slide-image">
@@ -42,7 +41,7 @@
 import {useWatchedStore} from "/stores/watchedStore";
 
 const store = useWatchedStore()
-
+const swiper = useSwiper()
 //import { register } from 'swiper/element/bundle';
 //register();
 
@@ -57,24 +56,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .swiper-block {
   width: 100%;
   margin-top: 95px;
 }
-.swiper-title {
-  width: 50%;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.swiper-buttons {
-  width: 50%;
+.swiper {
+  display: flex;
+  flex-direction: column-reverse;
+
 }
 .swiper-content {
   width: 100%;
-  margin-top: 47px;
 }
 .swiper-slide {
   padding-left: 20px;

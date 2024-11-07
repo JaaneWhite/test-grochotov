@@ -4,7 +4,8 @@ import {TypeCatalogItem} from "~/plugins/catalog";
 
 interface State {
     watchedItems: TypeCatalogItem[],
-    euroRate: number
+    euroRate: number,
+    currentSlide: number
 }
 
 export const useWatchedStore = defineStore('watchedStore', {
@@ -12,6 +13,7 @@ export const useWatchedStore = defineStore('watchedStore', {
     state: (): State => {
         return {
             euroRate: 100,
+            currentSlide: 1,
             watchedItems: [
                 {
                     id: 123456,
@@ -82,4 +84,22 @@ export const useWatchedStore = defineStore('watchedStore', {
             ],
         }
     },
+    actions: {
+        currentSlideUp(state: { currentSlide: number; watchedItems: any[] }) {
+            if (state.currentSlide === state.watchedItems.length) {
+                state.currentSlide = 1
+            } else {
+                state.currentSlide++
+            }
+
+        },
+        currentSlideDown(state: { currentSlide: number; watchedItems: any[] }) {
+            if (state.currentSlide === 1) {
+                state.currentSlide = state.watchedItems.length
+            } else {
+                state.currentSlide--
+            }
+
+        },
+    }
 })
